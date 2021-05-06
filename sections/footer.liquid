@@ -1,0 +1,384 @@
+<style>
+    footer{
+        background: {{ section.settings.color_footer_bg }};
+        color: {{ section.settings.color_footer_text }};
+    }
+    /* footer .footer-menu .menu-title, footer .social-title{
+        color: {{ section.settings.color_footer_menu_title }};
+    } */
+    footer .footer-menu a{
+        color: {{ section.settings.color_footer_menu_links }};
+    }
+    footer .address{
+        color: {{ section.settings.color_footer_text }};
+    }
+</style>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    {% for block in section.blocks %}
+                    {%- assign footer_linklist = block.settings.menu -%}
+                        <div class="col-md-4">
+                            <div class="footer-menu footer-fade-in">
+                                <span class="menu-title">{{block.settings.title}}</span>
+                                <ul>
+                                    {%- for link in linklists[footer_linklist].links -%}
+                                    <li>
+                                        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                                    </li>
+                                    {%- endfor -%}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="footer-fade-in">
+                    <div class="social-title">Follow Us</div>
+                <ul class="social-icons">
+                    {% if settings.social_facebook_link != blank %}
+                    <li>
+                        <a href="{{settings.social_facebook_link}}">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_instagram_link != blank %}
+                    <li>
+                        <a href="{{settings.social_instagram_link}}">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_twitter_link != blank %}
+                    <li>
+                        <a href="{{settings.social_twitter_link}}">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_youtube_link != blank %}
+                    <li>
+                        <a href="{{settings.social_youtube_link}}">
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_vimeo_link != blank %}
+                    <li>
+                        <a href="{{settings.social_vimeo_link}}">
+                            <i class="fa fa-vimeo" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_pinterest_link != blank %}
+                    <li>
+                        <a href="{{settings.social_pinterest_link}}">
+                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 footer-fade-in">
+                <hr>
+                <span class="address">{{ section.settings.footer_bottom_text }}</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Zápatí",
+    "da": "Sidefod",
+    "de": "Fußzeile",
+    "en": "Footer",
+    "es": "Pie de página",
+    "fi": "Alatunniste",
+    "fr": "Pied de page",
+    "it": "Footer",
+    "ja": "フッター",
+    "ko": "바닥글",
+    "nb": "Footer",
+    "nl": "Voettekst",
+    "pl": "Stopka",
+    "pt-BR": "Rodapé",
+    "pt-PT": "Rodapé",
+    "sv": "Sidfot",
+    "th": "ส่วนท้าย",
+    "tr": "Altbilgi",
+    "vi": "Chân trang",
+    "zh-CN": "页脚",
+    "zh-TW": "頁尾"
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "cs": "Platební metody",
+        "da": "Betalingsmetoder",
+        "de": "Zahlungsmethoden",
+        "en": "Payment methods",
+        "es": "Métodos de pago",
+        "fi": "Maksutavat",
+        "fr": "Moyens de paiement",
+        "it": "Metodi di pagamento",
+        "ja": "決済方法",
+        "ko": "결제 방법",
+        "nb": "Betalingsmetoder",
+        "nl": "Betaalmethoden",
+        "pl": "Metody płatności",
+        "pt-BR": "Formas de pagamento",
+        "pt-PT": "Métodos de Pagamento",
+        "sv": "Betalningsmetoder",
+        "th": "วิธีการชำระเงิน",
+        "tr": "Ödeme yöntemleri",
+        "vi": "Phương thức thanh toán",
+        "zh-CN": "支付方式",
+        "zh-TW": "付款方式"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": {
+        "cs": "Zobrazit ikony plateb",
+        "da": "Vis betalingsikoner",
+        "de": "Zahlungs-Buttons anzeigen",
+        "en": "Show payment icons",
+        "es": "Mostrar iconos de pago",
+        "fi": "Näytä maksukuvakkeet",
+        "fr": "Afficher les icônes de paiement",
+        "it": "Mostra le icone di pagamento",
+        "ja": "支払いアイコンを表示する",
+        "ko": "결제 아이콘 표시",
+        "nb": "Vis betalingsikoner",
+        "nl": "Betalingspictogrammen weergeven",
+        "pl": "Pokaż ikony płatności",
+        "pt-BR": "Exibir ícones de pagamento",
+        "pt-PT": "Mostrar ícones de pagamento",
+        "sv": "Visa betalningsikoner",
+        "th": "แสดงไอคอนการชำระเงิน",
+        "tr": "Ödeme simgelerini göster",
+        "vi": "Hiển thị biểu tượng thanh toán",
+        "zh-CN": "显示付款图标",
+        "zh-TW": "顯示付款圖示"
+      },
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "cs": "Barva",
+        "da": "Farve",
+        "de": "Farbe",
+        "en": "Color",
+        "es": "Color",
+        "fi": "Väri",
+        "fr": "Couleur",
+        "it": "Colore",
+        "ja": "色",
+        "ko": "색상",
+        "nb": "Farge",
+        "nl": "Kleur",
+        "pl": "Kolor",
+        "pt-BR": "Cor",
+        "pt-PT": "Cor",
+        "sv": "Färg",
+        "th": "สี",
+        "tr": "Renk",
+        "vi": "Màu",
+        "zh-CN": "颜色",
+        "zh-TW": "顏色"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_footer_bg",
+      "label": {
+        "cs": "Pozadí",
+        "da": "Baggrund",
+        "de": "Hintergrund",
+        "en": "Background",
+        "es": "Fondo",
+        "fi": "Tausta",
+        "fr": "Couleur de fond",
+        "it": "Sfondo",
+        "ja": "背景",
+        "ko": "배경",
+        "nb": "Bakgrunn",
+        "nl": "Achtergrond",
+        "pl": "Tło",
+        "pt-BR": "Plano de fundo",
+        "pt-PT": "Fundo",
+        "sv": "Bakgrund",
+        "th": "พื้นหลัง",
+        "tr": "Arka plan",
+        "vi": "Nền",
+        "zh-CN": "背景",
+        "zh-TW": "背景"
+      },
+      "default": "#1b1b1b"
+    },
+    {
+        "type": "color",
+        "id": "color_footer_menu_links",
+        "label": "Footer Menu Links",
+        "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_footer_text",
+      "label": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "default": "#333232"
+    },
+    {
+        "type": "textarea",
+        "id": "footer_bottom_text",
+        "label": "Address or Copyright Info",
+        "default": "1234 World Street"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": {
+        "cs": "Nabídka",
+        "da": "Menu",
+        "de": "Menü",
+        "en": "Menu",
+        "es": "Menú",
+        "fi": "Valikko",
+        "fr": "Menu",
+        "it": "Menu",
+        "ja": "メニュー",
+        "ko": "메뉴",
+        "nb": "Meny",
+        "nl": "Menu",
+        "pl": "Menu",
+        "pt-BR": "Menu",
+        "pt-PT": "Menu",
+        "sv": "Meny",
+        "th": "เมนู",
+        "tr": "Menü",
+        "vi": "Menu",
+        "zh-CN": "菜单",
+        "zh-TW": "選單"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Überschrift",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Heading",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Rychlé odkazy",
+            "da": "Genvejslinks",
+            "de": "Quick-Links",
+            "en": "Quick links",
+            "es": "Enlaces rápidos",
+            "fi": "Pikalinkit",
+            "fr": "Liens rapides",
+            "it": "Link rapidi",
+            "ja": "クイックリンク",
+            "ko": "빠른 링크",
+            "nb": "Hurtigkoblinger",
+            "nl": "Snelle links",
+            "pl": "Szybkie linki",
+            "pt-BR": "Links rápidos",
+            "pt-PT": "Ligações rápidas",
+            "sv": "Snabblänkar",
+            "th": "ลิงก์ด่วน",
+            "tr": "Hızlı bağlantılar",
+            "vi": "Liên kết nhanh",
+            "zh-CN": "快速链接",
+            "zh-TW": "快速連結"
+          }
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": {
+            "cs": "Nabídka",
+            "da": "Menu",
+            "de": "Menü",
+            "en": "Menu",
+            "es": "Menú",
+            "fi": "Valikko",
+            "fr": "Menu",
+            "it": "Menu",
+            "ja": "メニュー",
+            "ko": "메뉴",
+            "nb": "Meny",
+            "nl": "Menu",
+            "pl": "Menu",
+            "pt-BR": "Menu",
+            "pt-PT": "Menu",
+            "sv": "Meny",
+            "th": "เมนู",
+            "tr": "Menü",
+            "vi": "Menu",
+            "zh-CN": "菜单",
+            "zh-TW": "選單"
+          },
+          "default": "footer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

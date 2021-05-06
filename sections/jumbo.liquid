@@ -1,0 +1,150 @@
+<section class="jumbo-section">
+    <div class="bg-image" style="background: url('{{ section.settings.bg_image | img_url: '1200x' }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+    <div class="transparent-color"></div>
+    <div class="titles">
+        <h1>{{ section.settings.jumbo_h1 }}</h1>
+        <h2>{{ section.settings.jumbo_h2 }}</h2>
+    </div>
+    <div class="state">
+        <span class="number">01</span>
+    </div>
+    <div class="store-info">
+      {% for block in section.blocks %}
+        {%- if block.settings.row_image != blank -%}
+        <a href="{{ block.settings.row_image_destination }}">
+          <img src="{{ block.settings.row_image | img_url: '300x' }}">
+        </a>
+        {% else %}
+        <a href="{{ block.settings.row_image_destination }}">
+          <img src="{{'puzzometryjr23.jpg' | asset_url }}">
+        </a>
+        {% endif%}
+      {% endfor %}
+    </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Jumbo Section Settings",
+  "settings": [
+    {
+        "type": "radio",
+        "id": "bg_type",
+        "label": "Select Media Type for BG:",
+        "options": [
+          { "value": "image", "label": "Image" },
+          { "value": "video", "label": "Video" }
+        ],
+        "default": "image",
+        "info": "Do you want a Video or Image for the Background"
+    },
+    {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": {
+          "cs": "Obrázek",
+          "da": "Billede",
+          "de": "Foto",
+          "en": "Image",
+          "es": "Imagen",
+          "fi": "Kuva",
+          "fr": "Image",
+          "it": "Immagine",
+          "ja": "画像",
+          "ko": "이미지",
+          "nb": "Bilde",
+          "nl": "Afbeelding",
+          "pl": "Obraz",
+          "pt-BR": "Imagem",
+          "pt-PT": "Imagem",
+          "sv": "Bild",
+          "th": "รูปภาพ",
+          "tr": "Görsel",
+          "vi": "Hình ảnh",
+          "zh-CN": "图片",
+          "zh-TW": "圖片"
+        }
+    },
+    {
+        "type": "radio",
+        "id": "video_type",
+        "label": "Select Video Type:",
+        "options": [
+          { "value": "youtube", "label": "Youtube" },
+          { "value": "vimeo", "label": "Vimeo" }
+        ],
+        "default": "vimeo",
+        "info": "Choose location where you uploaded video"
+    },
+    {
+        "type": "text",
+        "id": "video_url",
+        "label": "Video URL"
+    },
+    {
+      "type": "text",
+      "id": "jumbo_h1",
+      "label": "Jumbo Title",
+      "default": "Puzzometry"
+    },
+    {
+      "type": "text",
+      "id": "jumbo_h2",
+      "label": "Jumbo Sub-Title",
+      "default": "Puzzle Company"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Row Images",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "row_image",
+          "label": "Image"
+        },
+        {
+          "id": "row_image_destination",
+          "type": "url",
+          "label": "Image URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Jumbo Section",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+          "row_image_destination": "#"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+          "row_image_destination": "#"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+          "row_image_destination": "#"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+          "row_image_destination": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign bgColor = section.settings.collection_bg_color -%}
+
+<section class="horizontal-gallery-section" style="background: url('{{ collection.image | img_url: '1200x'}}'); background-size: cover; height: 700px; width: 100%; background-position: center;">
+    <div class="overlay" style="background: {{ bgColor | color_modify: 'alpha', 0.5 }}">
+        <span class="date-number">
+            {{ section.settings.date }}
+        </span>
+        <span class="gallery-text">
+            GALLERY
+        </span>
+        <a href="{{ collection.url }}">
+            View
+        </a>
+    </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Horizontal Gallery",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection Gallery",
+      "info": "Choose a collection"
+    },
+    {
+        "type": "text",
+        "id": "date",
+        "default": "2021",
+        "label": "Year Date"
+    },
+    {
+      "type": "color",
+      "id": "collection_bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Horizontal Gallery",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
